@@ -1,0 +1,369 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --color: #20455B;
+}
+body{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.container .box1{
+    position: relative;
+    width: 435px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .box1 div.image{
+    position: relative;
+    width: 100%;
+    height:400px;
+    z-index: 9;
+}
+.container .box1 div.image img.main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    transition: ease-in-out 0.8s;
+}
+.container .box1 div.image img.main.leftremove{
+    transform: translateX(-100%) scale(1.2);
+    opacity: 0;
+}
+.container .box1 div.image img.main.righftremove{
+    transform: translateX(100%) scale(1.2);
+    opacity: 0;
+}
+
+
+.container .box1 div.image img#right{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    transform: translateX(60%) scale(1.2);
+    opacity: 0;
+    transition: ease-in-out 0.7s;
+}
+.container .box1 div.image img#left{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    transform: translateX(-60%) scale(1.2);
+    opacity: 0;
+    transition: ease-in-out 0.7s;
+}
+.container .box1 div.image img#right.leftmove{
+    transform: translateX(0%);
+    opacity: 1;
+}
+.container .box1 div.image img#left.rightmove{
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+
+
+.container .box1 div.image img#right.main.leftremove,
+.container .box1 div.image img#left.main.leftremove{
+    transform: translateX(-100%) scale(1.2);
+    opacity: 0;
+}
+.container .box1 div.image img#right.main.rightremove,
+.container .box1 div.image img#left.main.rightremove{
+    transform: translateX(100%) scale(1.2);
+    opacity: 0;
+}
+.container .box1 div.controller{
+    position: absolute;
+    width: 80%;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.container .box1 div.controller span{
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid white;
+    border-radius: 50%;
+    margin: 0 7px;
+    transition: ease-in-out 0.6s;
+    cursor: pointer;
+}
+.container .box1 div.controller span.active{
+    margin: 0 12px;
+    width: 22px;
+    background: var(--color);
+    border-radius: 10px;
+}
+.container .box1 div.controller i{
+    font-size: 18px;
+    line-height: 50px;
+    margin-left: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.container .box1 div.image{
+    -webkit-box-reflect: 5px ;
+    animation: ani 3s forwards infinite alternate;
+}
+@keyframes ani{
+    0%{
+        transform: translate(0px,0px);
+    }
+    25%{
+        transform: translate(3px,3px);
+    }
+    50%{
+        transform: translate(6px,-3px);
+    }
+    75%{
+        transform: translate(-6px,3px);
+    }
+    100%{
+        transform: translate(-5px,-5px);
+    }
+}
+
+
+
+
+
+
+
+
+.container .box2{
+    position: relative;
+    width: 950px;
+    z-index: 15;
+    height: 100%;
+}
+.container .box2 h1{
+    margin-top: 100px;
+    color: var(--color);
+    font-family: 'Russo One','monospace';
+    letter-spacing: 1px;
+}
+.container .box2 p{
+    color: #0008;
+    font-size: 18px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+.container .box2 h3{
+    margin-top: 25px;
+    font-size: 26px;
+    height: 25px;
+    line-height: 25px;
+}
+.container .box2 h3 i{
+    font-size: 16px;
+    margin-left: 12px;
+    line-height: 25px;
+}
+.container .box2 h3  span{
+    color: #0005;
+    font-size: 16px;
+    line-height: 25px;
+    margin-left: 20px;
+    position: relative;
+}
+.container .box2 h3  span::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+.container .box2 h3  span i{
+    font-size: 12px;
+    margin-left: 2px;
+}
+.size_Quan{
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 230px;
+}
+.size_Quan .size h3,
+.size_Quan .price h3{
+    font-size: 22px;
+    margin: 10px 0 15px;
+    text-transform: uppercase;
+    color: #0008;
+}
+.size_Quan .price .p span{
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-family: consolas;
+    font-size: 17px;
+    cursor: pointer;
+}
+.size_Quan .price .p span:nth-child(1){
+    background-color: #0002;
+}
+.size_Quan .price .p span:nth-child(2){
+    background-color: #0001;
+    color:var(--color);
+}
+.size_Quan .price .p span:nth-child(3){
+    background-color: #0002;
+    color:var(--color);
+}
+.show{
+    position: relative;
+    width: 90%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+}
+.show div.smallimg{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 3px solid rgba(0, 0, 0,0.3);
+    cursor: pointer;
+    transition: 0.3s;
+    overflow: hidden;
+    z-index: 999;
+    background: #fff;
+}
+.show div.smallimg:hover{
+    border: 3px solid rgba(0, 0, 0,0.45);
+}
+.show div.smallimg.active{
+    border-color: var(--color);
+}
+.show div.smallimg img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.show div.smallimg::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(197, 197, 197, 0.4);
+    transform-origin: left;
+    transition: ease-in-out 0.4s;
+}
+.show div.smallimg.active::before{
+    width: 0;
+}
+a{
+    padding: 10px 35px;
+    border: 2px solid var(--color);
+    margin-top: 55px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: consolas;
+    font-weight: bolder;
+    font-size: 20px;
+    color: var(--color);
+    border-radius: 20px;
+    transition: ease-in-out 0.5s;
+}
+a:hover{
+    color: #fff;
+    background: var(--color);
+}
+
+.color{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    height: 50px;
+}
+.color h2{
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #0008;
+    margin-right: 20px;
+}
+.color span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    transition: ease-in-out 0.5s;
+    margin: 0 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.color span:nth-child(2){
+    background-color: #20455B;
+}
+.color span:nth-child(3){
+    background-color: #83AB5D;
+}
+.color span:nth-child(2).active{
+    box-shadow: 0 0 5px #20455B,
+                0 0 10px #20455B,
+                0 0 20px #20455B;
+    border: 2px solid #fff;
+}
+.color span:nth-child(3).active{
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px #83AB5D,
+                0 0 10px #83AB5D,
+                0 0 20px #83AB5D,
+                0 0 40px #83AB5D;
+}
+.container .box2::before{
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(./nike-DCE263A7-logoeps.com/nike-logo-vector-01.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.05;
+    zoom: 4;
+    z-index: -1;
+}

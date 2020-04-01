@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./icon/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Product Card</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+            <div class="image">
+                <img src="./images/img1_1.png" alt="" class="main">
+            </div>
+            <div class="controller">
+                <span onclick="clickbtn(1,this)" class="active"></span>
+                <span onclick="clickbtn(2,this)"></span>
+                <span onclick="clickbtn(3,this)"></span>
+                <span onclick="clickbtn(4,this)"></span>
+                <span onclick="clickbtn(5,this)"></span>
+                <span onclick="clickbtn(6,this)"></span>
+                <i class="fas fa-arrow-right" onclick="next()"></i>
+            </div>
+        </div>
+        <div class="box2">
+            <h1>Nike Air Max 200</h1>
+            <p>AQ2588-005</p>
+            <h3><f>87.5</f><i class="fas fa-euro-sign"></i><span>266<i class="fas fa-euro-sign"></i></span></h3>
+            <div class="size_Quan">
+                <div class="price">
+                    <h3>SIZE</h3>
+                    <div class="p">
+                        <span id="a">7</span>
+                        <span onclick = "increasea(-1)">-</span>
+                        <span onclick = "increasea(+1)">+</span>
+                    </div>
+                </div>
+                <div class="price">
+                    <h3>Price</h3>
+                    <div class="p">
+                        <span id="b">1</span>
+                        <span onclick="increaseb(-1)">-</span>
+                        <span onclick="increaseb(+1)">+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="color">
+                <h2>color &nbsp&nbsp:</h2>
+                <span class="active" onclick="doColor(1,this)"></span>
+                <span onclick="doColor(2,this)"></span>
+            </div>
+
+            <div class="show">
+                <div onclick="clicksm(1,this)" class="smallimg active">
+                    <img src="./images/img1_1.png" alt="">
+                </div>
+                <div  onclick="clicksm(2,this)" class="smallimg">
+                    <img src="./images/img1_2.png" alt="">
+                </div>
+                <div onclick="clicksm(3,this)" class="smallimg">
+                    <img src="./images/img1_3.png" alt="">
+                </div>
+                <div onclick="clicksm(4,this)" class="smallimg" >
+                    <img src="./images/img1_4.png" alt="">
+                </div>
+                <div onclick="clicksm(5,this)" class="smallimg">
+                    <img src="./images/img1_5.png" alt="">
+                </div>
+                <div onclick="clicksm(6,this)" class="smallimg">
+                    <img src="./images/img1_6.png" alt="">
+                </div>
+            </div>
+
+            <a href="#">Buy Now</a>
+        </div>
+    </div>
+
+    <script src="./JS/jquery.js"></script>
+    <script>
+        let present = 1;
+        let col = 1;
+        let color = ['#20455B','#83AB5D'];
+        function doColor(i,e){
+            $('body > div > div.box2 > div.color > span').removeClass('active');
+            e.classList.add('active');
+            document.documentElement.style.setProperty('--color', color[i-1]);
+            col = i;
+            imgchange();
+        }
+
+        function imgchange(){
+            $('img.main').attr('src', `./images/img${col}_${present}.png`);
+            for(var i=1;i<=6;i++)
+            {
+                $(`body > div > div.box2 > div.show > div.smallimg:nth-child(${i}) > img`).attr('src', `./images/img${col}_${i}.png`);
+            }
+        }
+
+        let clicksm = (a,e)=>{
+            $('.smallimg').removeClass('active');
+            e.classList.add('active');
+            clickbtn(a,e);
+        }
+        function clickbtn(i,e){
+            if((i>=1 && i<=6) && i!=present ){
+                $('.controller span').removeClass('active');
+                $(`.controller span:nth-child(${i})`).addClass('active');
+                
+                if(present<i){
+                    $('.container .box1 .image').append(`<img src="./images/img${col}_${i}.png" id="right">`);
+                    $('.container .box1 .image img.main').addClass('leftremove');
+                    const b = setInterval(() => {
+                        console.log("Come");
+                        $('.container .box1 .image #right').addClass('leftmove');
+                        clearInterval(b);
+                    }, 1);
+                    const a = setInterval(() => {
+                        $('.container .box1 .image img.main').remove();
+                        $('.container .box1 .image img').addClass('main');
+                        console.log("Done");
+                        clearInterval(a);
+                    }, 650);
+                }
+
+                else{
+                    $('.container .box1 .image').append(`<img src="./images/img${col}_${i}.png" id="left">`);
+                    $('.container .box1 .image img.main').addClass('rightremove');
+                    const b = setInterval(() => {
+                        $('.container .box1 .image #left').addClass('rightmove');
+                        clearInterval(b);
+                    }, 1);
+                    const a = setInterval(() => {
+                        $('.container .box1 .image img').addClass('main');
+                        console.log("Done");
+                        clearInterval(a);
+                    }, 650);
+                }
+                
+                $('.smallimg').removeClass('active');
+                $(`.smallimg:nth-child(${i}`).addClass('active');
+
+                present = i;
+            }
+        }
+
+        function next(){
+            clickbtn(present+1);
+        }
+
+        function increasea(i){
+            if(Number($('#a').text()) + i>=7 && Number($('#a').text()) + i<11)
+                $('#a').text(Number($('#a').text())+i);
+        }
+
+        function increaseb(i) {
+            if (Number($('#b').text()) + i > 1  && Number($('#b').text()) + i < 11)
+                $('#b').text(Number($('#b').text()) + i);
+                $('f').text(87.5 * $('#b').text());
+        }
+    </script>
+</body>
+</html>
